@@ -33,9 +33,6 @@ def send_message(phone_number: str, text: str):
             "Content-Type": "application/json",
         }
 
-        # --- CORREÇÃO DO PAYLOAD (V2) ---
-        # O erro disse: 'textMessage is not of a type(s) object'
-        # Então vamos enviar um objeto JSON dentro de textMessage.
         payload = {
             "number": full_phone,
             "options": {"delay": 1200, "presence": "composing", "linkPreview": False},
@@ -57,9 +54,6 @@ def send_message(phone_number: str, text: str):
     except Exception as e:
         print(f"[Evolution] Erro Fatal ao enviar: {e}")
         return False
-
-
-# --- Scripts da Fase 0 (Mantidos Iguais) ---
 
 
 def send_welcome_message(phone_number: str, name: str):
