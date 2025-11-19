@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app
+from app.services.task_service import process_incoming_message
 
 webhook_bp = Blueprint("webhook", __name__)
 
@@ -27,13 +28,15 @@ def verify_whatsapp_webhook():
 @webhook_bp.route("/whatsapp", methods=["POST"])
 def receive_whatsapp_message():
     """
-    POST /api/webhook/whatsapp
-    Recebe eventos e mensagens do WhatsApp.
+    Recebe eventos da Evolution API.
     """
     data = request.get_json()
-    print(f"Webhook (POST) recebido: {data}")
 
-    # TODO: Fase 2+ - Processar mensagens (RAG, etc)
+    # Processa a mensagem em background (nao bloqueia a resposta)
+    # Para MVP, chamamos direto.
+    print(f"[Webhook] Recebido payload...")
 
-    # Responde 200 OK imediatamente para a API
+    # Chama o serviço que criamos
+    process_incoming_message(data)
+
     return jsonify(status="ok"), 200

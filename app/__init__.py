@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from config import config_by_name
 from .utils.supabase_client import init_supabase
 
@@ -7,6 +8,7 @@ def create_app(config_name: str = "development") -> Flask:
     """Application Factory"""
 
     app = Flask(__name__)
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     app.config.from_object(config_by_name[config_name])
 
@@ -37,5 +39,10 @@ def create_app(config_name: str = "development") -> Flask:
     from .blueprints.scheduler import scheduler_bp
 
     app.register_blueprint(scheduler_bp, url_prefix="/api/cron")
+
+    # Tasks
+    from .blueprints.tasks import tasks_bp
+
+    app.register_blueprint(tasks_bp, url_prefix="/api/tasks")
 
     return app
