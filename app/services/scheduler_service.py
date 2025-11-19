@@ -54,7 +54,7 @@ def process_daily_tasks():
             # Cabeçalho da mensagem
             msg = (
                 f"Bom dia, {name}! ☀️\n\n"
-                f"Sua meta de hoje no Mentor AI é:\n"
+                f"Sua meta de hoje na StudyTrack é:\n"
                 f"🎯 *{task_desc}*\n\n"
             )
 

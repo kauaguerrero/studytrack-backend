@@ -60,7 +60,7 @@ def send_welcome_message(phone_number: str, name: str):
     """Script 1: Boas-Vindas"""
 
     text = (
-        f"Olá {name}, aqui é o Mentor AI! 👋\n\n"
+        f"Olá {name}, Bem vindo à StudyTrack! 👋\n\n"
         "Recebi seu número! Seu acesso está confirmado. 🚀\n\n"
         "Estou usando meu novo sistema (Evolution) para falar com você mais rápido.\n"
         "Amanhã começamos!"
