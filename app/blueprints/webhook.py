@@ -33,10 +33,9 @@ def receive_whatsapp_message():
     data = request.get_json()
 
     # Processa a mensagem em background (nao bloqueia a resposta)
-    # Para MVP, chamamos direto.
+    # Para MVP, chama direto.
     print(f"[Webhook] Recebido payload...")
 
-    # Chama o serviço que criamos
     process_incoming_message(data)
 
     return jsonify(status="ok"), 200

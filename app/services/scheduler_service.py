@@ -71,7 +71,7 @@ def process_daily_tasks():
 
             msg += "Responda 'FEITO' quando terminar para manter seu Streak! 🔥"
 
-            # Envia (usa a Evolution configurada)
+            # Envia a mensagem
             sent = send_message(phone, msg)
             if sent:
                 count_sent += 1
